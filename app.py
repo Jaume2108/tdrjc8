@@ -18,7 +18,12 @@ dades_camps = {
     } for i in range(5)
 }
 
-mysql_url = os.environ.get("DATABASE_URL") or os.environ.get("MYSQL_URL")
+mysql_url = os.getenv("DATABASE_URL")
+print("DATABASE_URL:", mysql_url)
+
+if not mysql_url:
+    raise ValueError("❌ No se encontró DATABASE_URL en el entorno.")
+
 url = urlparse(mysql_url.replace("mysql+mysqlconnector://", "mysql://"))
 
 try:
@@ -533,4 +538,5 @@ if __name__ == "__main__":
     from os import environ
     port = int(environ.get("PORT", 5000))  # Railway define PORT automáticamente
     app.run(host="0.0.0.0", port=port, debug=False)
+
 
