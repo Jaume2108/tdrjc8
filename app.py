@@ -530,4 +530,7 @@ def obrir2():
     return render_template("camp0.html")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=5000 ,debug=True, use_reloader=False)
+    from os import environ
+    port = int(environ.get("PORT", 5000))  # Railway define PORT automáticamente
+    app.run(host="0.0.0.0", port=port, debug=False)
+
