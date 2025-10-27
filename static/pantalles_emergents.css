@@ -1,0 +1,160 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+}
+.modal-container{
+    position: relative;
+    margin: auto;
+    width: 90%;
+    max-width: 600px;
+    max-height: 100%;
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 3em 2.5em;
+    display: grid;
+    gap: 1.5em;
+    place-items: center;
+    grid-auto-columns: 100%;
+}
+.titol{
+    text-align: center;
+    font-size: 2.5em;
+}
+#div_cuadres{
+    margin-top: 1em;
+}
+#cuadres{
+    display: block;
+    margin: auto;
+    margin-top: 1em;
+    height: 5%; 
+    width: 15em;
+    font-size: x-large;
+    border-radius: 5px;
+}
+.boto2 {
+    flex: 1;
+    padding: 2vh 3vw;
+    margin-top: 6vh;
+    color: white;
+    font-size: 2vw;
+    font-weight: 600;
+    border: none;
+    background-color: rgb(5, 91, 102);
+    border-radius: 1vh;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    min-height: 35px;
+    min-width: 60px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.boto2:hover, .tancar:hover,.boto3:hover, .boto_accio:hover{
+    transform: translateY(-0.5vh);
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+}
+.boto3{
+    flex: 1;
+    padding: 1vh 2vw;
+    margin-top: 2vh;
+    color: white;
+    font-size: 1.5vw;
+    font-weight: 550;
+    border: none;
+    background-color: rgb(5, 91, 102);
+    border-radius: 0.5vh;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    min-height: 30px ;
+    min-width: 55px; 
+}
+.tancar{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 2.5em;
+    height: 2.5em;
+}
+.creu{
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+}
+#flash-container {
+  position: fixed;
+  z-index: 1000;
+  top: 3vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.flash {
+  padding: 1.2vh 2vw;
+  border-radius: 1vw;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  animation: fadein 0.5s, fadeout 0.5s 3.5s forwards;
+}
+.flash.accio {
+  background-color: green;
+}
+.flash.error {
+  background-color: red;
+}
+@keyframes fadein {
+  from {opacity: 0; transform: translateY(-2vh);}
+  to {opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeout {
+  from {opacity: 1; transform: translateY(0);}
+  to {opacity: 0; transform: translateY(-2vh);}
+}
+.boto_accio {
+    padding: 2vh 4vw;
+    font-size: 1.5vw;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 1vh;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    min-height: 40px;
+    min-width: 120px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+}
+.boto_accio {
+    flex: 1;
+    padding: 1vh 2vw;
+    color: white;
+    font-size: 2vw;
+    font-weight: 500;
+    border: none;
+    background-color: rgb(5, 91, 102);
+    border-radius: 1vh;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    min-height: 35px;
+    min-width: 60px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.boto_accio.desar {
+    margin-top: 6vh;
+}
+
+.boto_accio.eliminar {
+    margin-top: 3vh;
+}

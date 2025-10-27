@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pantalla_inici.css') }}">
+    <title>Agricultura de precisió</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <script>
+    async function actualizar() {
+    try {
+        const res = await fetch(`/dades?camp=0`);
+        const dades = await res.json();
+
+        // Secció 1
+        document.getElementById("humitat_sol_1").innerText =
+            dades.seccio1["humitat_sol"].toFixed(2) + "%";
+        document.getElementById("temp_ambient_1").innerText =
+            dades.seccio1.temp_ambient.toFixed(2) + " °C";
+        document.getElementById("humitat_ambient_1").innerText =
+            dades.seccio1.humitat_ambient.toFixed(2) + "%";
+
+        // Secció 2
+        document.getElementById("humitat_sol_2").innerText =
+            dades.seccio2["humitat_sol"].toFixed(2) + "%";
+        document.getElementById("temp_ambient_2").innerText =
+            dades.seccio2.temp_ambient.toFixed(2) + " °C";
+        document.getElementById("humitat_ambient_2").innerText =
+            dades.seccio2.humitat_ambient.toFixed(2) + "%";
+
+    } catch (err) {
+        console.error("Error al llegir dades:", err);
+    }
+}
+    </script>
+        <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url("{{ url_for('static', filename='foto_fondo.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="flash-container">
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+          <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    <div id="flexbox">
+        <div>
+            <form action="/pantalla_inici">
+                <button id="enrere" type="submit" style="background-color: rgba(158, 217, 235, 0.205)">
+                    <img src="{{ url_for('static', filename='fletxa.png') }}">
+                </button>
+            </form>
+        </div>
+        <div id="camp_titol">
+            <h2>{{ nom_camp }}</h2>
+        </div>
+        <div>
+            <img id="logo_camps" src="{{ url_for('static', filename='logo.png') }}">
+        </div>
+    </div>
+    <div id="divseccions">
+        <div class="seccio">
+            <h2>Secció 1</h2>
+            <div id="divtaula_camps">
+                <table id="taula_camps">
+                    <tr>
+                        <th class="border"></th>
+                        <th colspan="2">INFORMACIÓ DE LA SECCIÓ 1:</th>
+                        <th class="border"></th>
+                    </tr>
+                    <tr>
+                        <td class="border"></td>
+                        <td>Humitat del sòl:</td>
+                        <td id="humitat_sol_1">Esperant dades...</td>
+                        <td class="border"></td>
+                    </tr>
+                    <tr>
+                        <td class="border"></td>
+                        <td>Temperatura ambient:</td>
+                        <td id="temp_ambient_1">Esperant dades...</td>
+                        <td class="border"></td>
+                    </tr>
+                    <tr>
+                        <td class="border"></td>
+                        <td>Humitat ambient:</td>
+                        <td id="humitat_ambient_1">Esperant dades...</td>
+                        <td class="border"></td>
+                    </tr>
+                    <tr>
+                        <td class="border"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="div_botons">
+                <form action="/tancar" method="post">
+                    <button class="boto_tancar">Tancar</button>
+                </form>
+                <form action="/obrir" method="post">
+                    <button class="boto_obrir">Obrir</button>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="seccio" id="seccio2">
+            <h2>Secció 2</h2>
+            <div id="divtaula_camps">
+                <table id="taula_camps">
+                    <tr>
+                        <th class="border"></th>
+                        <th colspan="2">INFORMACIÓ DE LA SECCIÓ 2:</th>
+                        <th class="border"></th>
+                    </tr>
+                    <tr>
+                        <td class="border"></td>
+                        <td>Humitat del sòl:</td>
+                        <td id="humitat_sol_2">Esperant dades...</td>
+                        <td class="border"></td>
+                    </tr>
+                    <tr>
+                        <td class="border"></td>
+                        <td>Temperatura ambient:</td>
+                        <td id="temp_ambient_2">Esperant dades...</td>
+                        <td class="border"></td>
+                    </tr>
+                    <tr>
+                        <td class="border"></td>
+                        <td>Humitat ambient:</td>
+                        <td id="humitat_ambient_2">Esperant dades...</td>
+                        <td class="border"></td>
+                    </tr>
+                    <tr>
+                        <td class="border"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="div_botons">
+                <form action="/tancar2" method="post">
+                    <button class="boto_tancar">Tancar</button>
+                </form>
+                <form action="/obrir2" method="post">
+                    <button class="boto_obrir">Obrir</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<script>
+    window.addEventListener("load", () => {
+        actualizar();
+        setInterval(actualizar, 5000); // refresca les dades cada 5 segons
+    });
+</script>
+</body>
+</html>

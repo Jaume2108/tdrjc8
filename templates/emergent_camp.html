@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pantalles_emergents.css') }}">
+    <title>Agricultura de precisió</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+   <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url("{{ url_for('static', filename='foto_fondo.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="flash-container">
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+          <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    <selection class="modal">
+        <div class="modal-container">
+            <h2 class="titol">Afegeix un nou camp</h2>
+            <div id="div_cuadres">
+                <form action="/camps" method="POST">
+                    <input id="cuadres" type="text" name="Nom" placeholder="{{crespostan or 'Nom del camp'}}" value="{{nom or ''}}">
+                    <input id="cuadres" type="text" name="Tamany" placeholder="{{crespostat or 'Tamany del camp en ha'}}" value="{{tamany or ''}}">
+                    <button class="boto2" type="submit">Desar</button>
+                </form>
+            </div>
+            <form action="/pantalla_inici">
+                <button class="tancar"><img class="creu" src="{{ url_for('static', filename='Tancar.png') }}"></button>
+            </form>
+        </div>
+    </selection>
+</body>
+</html>

@@ -1,0 +1,305 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+#boto{
+    border-radius: 50%;
+    border: none;
+    height: 12vh; 
+    width: 12vh; 
+}
+#boto_sessio {
+    position: absolute;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    height: clamp(9vh, 11vw, 15vh);
+    width: clamp(9vh, 11vw, 15vh);
+    right: 2vw;
+    background-color: rgb(7, 7, 7);
+    cursor: pointer;
+    min-height: 40px;
+    min-width: 40px;
+    overflow: hidden;
+    padding: 0%;
+}
+#boto_sessio img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 35px;
+    min-width: 35px;
+}
+#taula{
+    border-collapse: separate;
+    overflow: hidden;
+    border-spacing: 0;
+    width: 60vw;
+    height: 50vh;
+    border-radius: 2vh;
+    background-color: rgb(165, 148, 127);
+
+}
+#taula_camps{
+    border-collapse: separate;
+    overflow: hidden;
+    border-spacing: 0;
+    width: 80vw;
+    height: 50vh;
+    border-radius: 2vh;
+    background-color: rgb(165, 148, 127);
+
+}
+#taula_camps {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    font-size: 1vw;
+}
+#taula th, #taula_camps th{
+    color: #52ff61;
+    font-size: 2vw;
+    border: none;
+}
+#taula td, #taula_camps td{
+    font-size: 1.5vw;
+    background-color: white;
+    border: 0.4vh solid rgb(165, 148, 127);
+    border-radius: 1vh;
+}
+#taula th, #taula td, #taula_camps th, #taula_camps td{
+    padding: 1vh 1vw;
+    text-align: center;
+}
+#taula td.border, #taula th.border, #taula_camps td.border, #taula_camps th.border{
+    background-color: rgb(165, 148, 127);
+}
+#divtaula {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+#divtaula_camps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+    width: 100%;
+}
+#enlace{
+    color: black;
+    text-decoration: none;
+}
+#logo_pinici {
+    height: clamp(9vh, 11vw, 15vh);
+    width: clamp(9vh, 11vw, 15vh);
+    top: 1vh;
+    border-radius: 50%;
+    margin-left: 2vw;
+    object-fit: cover;
+    min-height: 40px;
+    min-width: 40px;
+}
+#logo_camps {
+    position: absolute;
+    top: 1vh;
+    right: 2vw; 
+    height: clamp(8vh, 10vw, 14vh);
+    width: clamp(8vh, 10vw, 14vh);
+    border-radius: 50%;
+    object-fit: cover;
+    min-height: 40px;
+    min-width: 40px;
+}
+#enrere {
+    border: none;
+    height: clamp(9vh, 11vw, 15vh);
+    width: clamp(9vh, 11vw, 15vh);
+    position: absolute;
+    cursor: pointer;
+    top: 1vh;
+    left: 2vw;
+    min-height: 40px;
+    min-width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#enrere img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block; 
+}
+#boto2{
+    display: block;
+    margin: auto;
+    margin-top: 3vh;
+    width: 40vw;
+    height: 10vh;
+    font-size: 2vh;
+}
+#flexbox{
+    display: flex;
+    width: 100%;
+    height: 17vh;
+    min-height: 50px;
+    align-items: center; 
+}
+#flexbox div{
+    margin: 1vh;
+    padding: 2vh;
+}
+#div_cuadres{
+    margin-top: 10vh;
+}
+#cuadres{
+    display: block;
+    margin: auto;
+    margin-top: 2vh;
+    height: 5vh;
+    width: 40vw;
+    font-size: 2vh;
+    border-radius: 1vh;
+}
+#botons3div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+    width: 100%;
+    gap: 5vw;
+}
+.boto3{
+    flex: 1;
+    padding: 2vh 3vw;
+    margin-top: 2vh;
+    color: white;
+    font-size: 2vw;
+    font-weight: 600;
+    border: none;
+    background-color: rgb(5, 91, 102);
+    border-radius: 1vh;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    min-height: 35px ;
+    min-width: 60px; 
+}
+.boto3:hover, .boto_obrir:hover, .boto_tancar:hover, #boto_sessio:hover{
+    transform: translateY(-0.5vh);
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+}
+.div_botons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 4vw;
+    margin-top: 8vh;
+}
+.boto_obrir{
+    padding: 2vh 3vw;
+    color: white;
+    font-size: 2vw;
+    font-weight: 600;
+    border: none;
+    background-color: green;
+    border-radius: 1vh;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    width: 15vw;
+    min-height: 35px ;
+    min-width: 60px;
+}
+.boto_tancar{
+    padding: 2vh 3vw;
+    color: white;
+    font-size: 2vw;
+    font-weight: 600;
+    border: none;
+    background-color: red;
+    border-radius: 1vh;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    width: 15vw;
+    min-height: 35px ;
+    min-width: 60px;
+}
+#flash-container {
+  position: fixed;
+  z-index: 1000;
+  top: 3vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.flash {
+  padding: 1.2vh 2vw;
+  border-radius: 1vw;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  animation: fadein 0.5s, fadeout 0.5s 3.5s forwards;
+}
+.flash.accio {
+  background-color: green;
+}
+.flash.error {
+  background-color: red;
+}
+@keyframes fadein {
+  from {opacity: 0; transform: translateY(-2vh);}
+  to {opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeout {
+  from {opacity: 1; transform: translateY(0);}
+  to {opacity: 0; transform: translateY(-2vh);}
+}
+#divseccions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    width: 100%;
+    margin: 4vh auto;
+    padding: 0 2vw;
+    box-sizing: border-box;
+}
+.seccio {
+    width: 80vw;
+    max-width: 900px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 2vh;
+    border-radius: 1vh;
+}
+#seccio2 {
+    border-radius: 0%;
+    border: none;
+    border-top: 0.4vh solid #000000;
+    padding-top: 4vh;
+    margin-top: 4vh;
+}
+#camp_titol {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+#camp_titol h1 {
+    margin: 0;
+    font-size: 3vw;
+    font-weight: bold;
+}
+.titols{
+    font-size: 3vh;
+}

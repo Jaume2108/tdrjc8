@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agricultura de precisió</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #2f5d31, #1c3a20);
+            color: white;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+
+        img.logo {
+            width: 180px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.6);
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 26px;
+            color: #e8f5e9;
+            text-align: center;
+        }
+
+        #barra {
+            width: 80%;
+            height: 25px;
+            background-color: #444;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 10px;
+            box-shadow: inset 0px 2px 6px rgba(0,0,0,0.4);
+        }
+
+        #progres {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #4caf50, #81c784);
+            transition: width 0.1s;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .flash {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .flash.success { background: #2e7d32; }
+        .flash.error { background: #c62828; }
+        .flash.info { background: #1565c0; }
+    </style>
+</head>
+<body>
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+    <h1>Benvinguts a la nostra web!</h1>
+    <div id="barra">
+        <div id="progres"></div>
+    </div>
+    <script>
+        let progress = document.getElementById("progres");
+        let width = 0;
+        let interval = setInterval(() => {
+            if (width >= 100) {
+                clearInterval(interval);
+                window.location.href = "/inici_sessio";
+            } else {
+                width += 100 / (6 * 10);
+                progres.style.width = width + "%";
+            }
+        }, 100);
+    </script>
+</body>
+</html>

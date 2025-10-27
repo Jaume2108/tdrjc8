@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pantalla_inici.css') }}">
+    <title>Agricultura de precisió</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+</head>
+<body>
+    <div id="flash-container">
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+          <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    <div id="flexbox">
+        <div>
+            <form action="/pantalla_inici">
+            <button id="enrere" type="submit" style="background-color: #52ff61; border: none; width:100px; height:100px;"><img src="{{ url_for('static', filename='fletxa.png') }}" width="100px" height="100px"></img></button>
+            </form>
+        </div>
+        <div>
+            <img id="logo" src="{{ url_for('static', filename='fletxa.png') }}" width="100px" height="100px"></img>
+        </div>
+    </div>
+    <div id="div_cuadres">
+        <form action="/camps" method="POST">
+            <input id="cuadres" type="text" name="Nom" placeholder="{{crespostan or 'Nom del camp'}}" value="{{nom or ''}}">
+            <input id="cuadres" type="text" name="Tamany" placeholder="{{crespostat or 'Tamany del camp'}}" value="{{tamany or ''}}">
+            <button id="boto2" type="submit">Desar</button>
+        </form>
+   </div>
+</body>
+</html>

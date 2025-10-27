@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='registrarse_sessio.css') }}">
+    <meta charset="UTF-8">
+    <title>Agricultura de precisió</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+</head>
+<body>
+    <div id="flash-container">
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+          <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    <div>
+        <div id="flexbox">
+            <form action="/inici_sessio">
+            <button id="enrere" type="submit" style="background-color: rgb(133, 142, 158)"><img id="enrere_img" src="{{ url_for('static', filename='fletxa.png') }}"></img></button>
+            </form>
+        </div>
+        <div>
+            <img id="logo" src="{{ url_for('static', filename='logo.png') }}"></img>
+        </div>
+    </div>
+   <div id="div_cuadres">
+        <table id="taula">
+            <tr>
+                <th colspan="3">
+                    <h1>Registre sessió</h1>
+                </th>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <form action="/cuadres" method="POST">
+                        <input id="cuadres" type="text" name="Nom" placeholder="{{respostan or 'Nom'}}" value="{{nom or ''}}">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                        <input id="cuadres" type="text" name="Cognoms" placeholder="{{respostac or 'Cognoms'}}" value="{{cognom or ''}}">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                        <input id="cuadres" type="text" name="EMail" placeholder="{{respostae or 'Email'}}" value="{{email or ''}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <input id="cuadres" type="password" name="Contrasenya" placeholder="{{respostacontra or respostacoinc or 'Contrasenya'}}" value="{{contra or ''}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <input id="cuadres" type="password" name="Confirmar contrasenya" placeholder="{{respostaccontra or respostacoinc or 'Confirmar contrasenya'}}" value="{{conf_contra or ''}}">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                        <button id="boto" type="submit">Registrar-se</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

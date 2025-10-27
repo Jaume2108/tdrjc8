@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pantalla_inici.css') }}">
+    <meta charset="UTF-8">
+    <title>Agricultura de precisió</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <style>
+        body{
+            background-image: url("{{ url_for('static', filename='foto_fondo.jpg') }}");
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.205);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="flash-container">
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+          <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    <div>
+        <form action="/registre_editar">
+            <button id="boto_sessio" ><img src="{{ url_for('static', filename='usuari2.png') }}"></button>
+        </form>
+        <P>
+            <img id="logo_pinici" src="{{ url_for('static', filename='logo.png') }}"></img>
+        </P>
+    </div>
+    <div id="divtaula">
+        <table id="taula">
+            <tr>
+                <th class="border"></th>
+                <th class="titols"><img src="{{ url_for('static', filename='planta.png') }}" width="15vw" height="15vh"></img>CAMPS:</th>
+                <th class="titols">TAMANY DEL CAMP:</th>
+                <th class="border"></th>
+            </tr>
+            <tr>
+                <td class="border"></td>
+                <td><a href="/camp0" id="enlace">{{ camps[0] }}</a></td>
+                <td>{{ tamanys[0] }}</td>
+                <td class="border"></td>
+            </tr>
+            <tr>
+                <td class="border"></td>
+                <td><a href="/camp1" id="enlace">{{ camps[1] }}</a></td>
+                <td>{{ tamanys[1] }}</td>
+                <td class="border"></td>
+            </tr>
+            <tr>
+                <td class="border"></td>
+                <td><a href="/camp2" id="enlace">{{ camps[2] }}</a></td>
+                <td>{{ tamanys[2] }}</td>
+                <td class="border"></td>
+            </tr>
+            <tr>
+                <td class="border"></td>
+                <td><a href="/camp3" id="enlace">{{ camps[3] }}</a></td>
+                <td>{{ tamanys[3] }}</td>
+                <td class="border"></td>
+            </tr>
+            <tr>
+                <td class="border"></td>
+                <td><a href="/camp4" id="enlace">{{ camps[4] }}</a></td>
+                <td>{{ tamanys[4] }}</td>
+                <td class="border"></td>
+            </tr>
+            <tr>
+                <td class="border"></td>
+            </tr>
+        </table>
+        <div id="botons3div">
+            {% if camps|length== 0 %}
+                <form action="/emergent">
+                    <button class="boto3">Afegir camp</button>
+                </form>
+            {% elif camps|length< 5 %}
+                <form action="/emergent">
+                    <button class="boto3">Afegir camp</button>
+                </form>
+                <form action="/editable">
+                    <button class="boto3">Editar camp</button>
+                </form>
+            {% else %}
+                <form action="/editable">
+                    <button class="boto3">Editar camp</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    <p>{{climit}}</p>
+    <br>
+</body>
+</html>
