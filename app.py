@@ -18,25 +18,19 @@ dades_camps = {
     } for i in range(5)
 }
 
-mysql_url = os.getenv("DATABASE_URL")
-print("DATABASE_URL:", mysql_url)
+mysql_url = os.environ.get("DATABASE_URL")
+url = urlparse(mysql_url)
 
-if not mysql_url:
-    raise ValueError("❌ No se encontró DATABASE_URL en el entorno.")
+db_name = url.path.lstrip(b"/").decode("utf-8") if isinstance(url.path, bytes) else url.path.lstrip("/")
 
-url = urlparse(mysql_url.replace("mysql+mysqlconnector://", "mysql://"))
-
-try:
-    conexio = mysql.connector.connect(
-        host=url.hostname,
-        user=url.username,
-        password=url.password,
-        database=url.path.lstrip("/"),
-        port=url.port or 3306
-    )
-    print("✅ Conexión a MySQL establecida correctamente.")
-except mysql.connector.Error as e:
-    print("❌ Error al conectar con MySQL:", e)
+conexio = mysql.connector.connect(
+    user=url.username.decode("utf-8") if isinstance(url.username, bytes) else url.username,
+    password=url.password.decode("utf-8") if isinstance(url.password, bytes) else url.password,
+    host=url.hostname.decode("utf-8") if isinstance(url.hostname, bytes) else url.hostname,
+    database=db_name,
+    port=int(url.port),
+    use_pure=True
+)
 
 app=Flask(__name__)
 app.secret_key="Jaume"
@@ -535,7 +529,4 @@ def obrir2():
     return render_template("camp0.html")
 
 if __name__ == "__main__":
-    from os import environ
-    port = int(environ.get("PORT", 5000))  # Railway define PORT automáticamente
-    app.run(host="0.0.0.0", port=port, debug=False)
-
+    app.run(host="0.0.0.0",port=5000 ,debug=True, use_reloader=False)
